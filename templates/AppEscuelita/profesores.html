@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+<div>
+    <form action="/app/ver" method="GET">
+
+        {{ form.as_p }}
+
+        <h6><input type="submit" value="Buscar"></h6>
+
+    </form>
+</div>
+
+   {% for director in directores %}
+       <h5>{{ profesor.nombre }} {{ profesor.apellido }}</h5>
+        <p class="lead mb-0">
+       <h6>{{ profesor.email }}</h6>
+        </p>
+        <hr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+<div>
+    <form action="/app/mostrar" method="GET">
+
+        {{ form.as_p }}
+
+        <h6><input type="submit" value="Buscar"></h6>
+
+    </form>
+</div>
+
+   {% for materia in materias %}
+       <h5>{{ materia.nombre }}</h5>
+        <p class="lead mb-0">
+       <h6>Puntos {{ materia.puntos }}</h6>
+        </p>
+        <hr>
+    {% endfor %}
+{% endblock %}

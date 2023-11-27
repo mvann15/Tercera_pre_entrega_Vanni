@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+    {% if deporte %}
+        <p><h4> {{ deporte.nombre }} </h4></p>
+    {% endif %}
+
+    {% if profesor %}
+        <p><h4>{{ profesor.nombre }}</h4></p>
+    {% endif %}
+{% endblock %}

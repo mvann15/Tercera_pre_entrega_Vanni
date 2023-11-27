@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+<div>
+    <form action="/app/buscar" method="GET">
+
+        {{ form.as_p }}
+
+        <h6><input type="submit" value="Buscar"></h6>
+
+    </form>
+</div>
+
+   {% for deporte in deportes %}
+       <h5>{{ deporte.nombre }}</h5>
+        <p class="lead mb-0">
+       <h6>{{ deporte.categoria }}</h6>
+        </p>
+        <hr>
+    {% endfor %}
+{% endblock %}
