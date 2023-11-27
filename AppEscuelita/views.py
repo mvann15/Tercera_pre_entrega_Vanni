@@ -17,7 +17,7 @@ def mostrar_deportes(request):
 
 
 def crear_deporte(request):
-    deporte = Deporte(nombre="Futbol", categoria=5)
+    deporte = Deporte(nombre="", categoria=5)
     deporte.save()
 
     return redirect("/app/deportes/")
