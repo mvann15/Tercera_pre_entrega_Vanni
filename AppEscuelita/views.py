@@ -87,13 +87,6 @@ def buscar_categoria(request):
         return redirect("/app/deportes/")
 
 
-def crear_profesor(request):
-    profesor = Profesor(nombre="Ramiro", apellido="Vasquez", email="ramirov@escuelita.ar")
-    profesor.save()
-
-    return redirect("/app/profesores/")
-
-
 class ProfesorList(ListView):
     model = Profesor
     template_name = "AppEscuelita/profesor_1.html"
@@ -123,6 +116,13 @@ class ProfesorEliminar(DeleteView):
     success_url = "/app/profesores/listar"
     template_name = "AppEscuelita/eliminar_profesor.html"
     fields = ["nombre", "apellido", "email"]
+
+
+def crear_profesor(request):
+    profesor = Profesor(nombre="Ramiro", apellido="Vasquez", email="ramirov@escuelita.ar")
+    profesor.save()
+
+    return redirect("/app/profesores/")
 
 
 def ver_profesores(request):
@@ -181,7 +181,7 @@ class MateriaList(ListView):
 
 
 class MateriaDetalle(DetailView):
-    model = Deporte
+    model = Materia
     template_name = "AppEscuelita/materias_detalle.html"
 
 
