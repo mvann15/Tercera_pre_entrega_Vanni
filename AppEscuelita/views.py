@@ -1,9 +1,41 @@
 from django.shortcuts import render, redirect
 from django.utils.datastructures import MultiValueDictKeyError
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from AppEscuelita.models import Deporte, Profesor, Materia
 from AppEscuelita.forms import DeporteForm, BuscarDeporteForm, ProfesorForm, BuscarProfesorForm, MateriaForm, \
     BuscarMateriaForm
+
+
+class DeporteList(ListView):
+    model = Deporte
+    template_name = "AppEscuelita/deportes_1.html"
+
+
+class DeporteDetalle(DetailView):
+    model = Deporte
+    template_name = "AppEscuelita/deportes_detalle.html"
+
+
+class DeporteCreacion(CreateView):
+    model = Deporte
+    success_url = "/app/deportes/listar"
+    template_name = "AppEscuelita/crear_deporte.html"
+    fields = ["nombre", "categoria"]
+
+
+class DeporteActualizacion(UpdateView):
+    model = Deporte
+    success_url = "/app/deportes/listar"
+    template_name = "AppEscuelita/crear_deporte.html"
+    fields = ["nombre", "categoria"]
+
+
+class DeporteEliminar(DeleteView):
+    model = Deporte
+    success_url = "/app/deportes/listar"
+    template_name = "AppEscuelita/eliminar_deporte.html"
+    fields = ["nombre", "categoria"]
 
 
 def mostrar_deportes(request):
@@ -62,6 +94,37 @@ def crear_profesor(request):
     return redirect("/app/profesores/")
 
 
+class ProfesorList(ListView):
+    model = Profesor
+    template_name = "AppEscuelita/profesor_1.html"
+
+
+class ProfesorDetalle(DetailView):
+    model = Profesor
+    template_name = "AppEscuelita/profesores_detalle.html"
+
+
+class ProfesorCreacion(CreateView):
+    model = Profesor
+    success_url = "/app/profesores/listar"
+    template_name = "AppEscuelita/crear_profesor.html"
+    fields = ["nombre", "apellido", "email"]
+
+
+class ProfesorActualizacion(UpdateView):
+    model = Profesor
+    success_url = "/app/profesores/listar"
+    template_name = "AppEscuelita/crear_profesor.html"
+    fields = ["nombre", "apellido", "email"]
+
+
+class ProfesorEliminar(DeleteView):
+    model = Profesor
+    success_url = "/app/profesores/listar"
+    template_name = "AppEscuelita/eliminar_profesor.html"
+    fields = ["nombre", "apellido", "email"]
+
+
 def ver_profesores(request):
     profesores = Profesor.objects.all()
     contexto = {
@@ -112,6 +175,37 @@ def crear_materia(request):
     return redirect("/app/materias/")
 
 
+class MateriaList(ListView):
+    model = Materia
+    template_name = "AppEscuelita/materia_1.html"
+
+
+class MateriaDetalle(DetailView):
+    model = Deporte
+    template_name = "AppEscuelita/materias_detalle.html"
+
+
+class MateriaCreacion(CreateView):
+    model = Materia
+    success_url = "/app/materias/listar"
+    template_name = "AppEscuelita/crear_materia.html"
+    fields = ["nombre", "puntaje"]
+
+
+class MateriaActualizacion(UpdateView):
+    model = Materia
+    success_url = "/app/materias/listar"
+    template_name = "AppEscuelita/crear_materia.html"
+    fields = ["nombre", "puntaje"]
+
+
+class MateriaEliminar(DeleteView):
+    model = Materia
+    success_url = "/app/materias/listar"
+    template_name = "AppEscuelita/eliminar_materia.html"
+    fields = ["nombre", "puntaje"]
+
+
 def ver_materias(request):
     materias = Materia.objects.all()
     contexto = {
@@ -128,7 +222,7 @@ def materia_form(request):
 
         if materia_formulario.is_valid():
             informacion = materia_formulario.cleaned_data
-            materia_crear = Materia(nombre=informacion["nombre"], puntaje=informacion["puntos"])
+            materia_crear = Materia(nombre=informacion["nombre"], puntaje=informacion["puntaje"])
             materia_crear.save()
             return redirect("/app/materias/")
 

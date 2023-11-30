@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<p> Este deporte es: <b>{{ deporte.nombre}}</b></p>
+<p> Categoría: {{ deporte.categoria }}</p>
+<p>
+    <a href="{% url 'DeportesList' %}"></a>
+</p>
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<p> Tu materia es: <b>{{ materia.nombre}}</b></p>
+<p> Puntaje: {{ materia.puntaje }}</p>
+<p>
+    <a href="{% url 'MateriasList' %}"></a>
+</p>
+
+
+{% endblock %}

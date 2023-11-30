@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<p> Tu profe es: <b>{{ profesor.nombre}}</b></p>
+<p> Apellido: {{ profesor.apellido }}</p>
+<p>
+    <a href="{% url 'ProfesoresList' %}"></a>
+</p>
+
+
+{% endblock %}

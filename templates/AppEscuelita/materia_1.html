@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<div>
+    <form action="/app/buscar" method="GET">
+
+       <h6><input type="text" name="nombre"></h6>
+
+        <h6><input type="submit" value="Buscar"></h6>
+
+    </form>
+</div>
+<p>
+    <a href="{% url 'MateriaCreate' %}">Crear</a>
+</p>
+
+
+   {% for materia in object_list %}
+       <h5>{{ materia.nombre }}</h5>
+        <p class="lead mb-0">
+        </p>
+       <h6>Puntaje {{ materia.puntaje }}</h6>
+<p>
+    <a href="{% url 'MateriaDetail' materia.id %}">Detalle</a>
+</p>
+<p>
+    <a href="{% url 'MateriaUpdate' materia.id %}">Editar</a>
+</p>
+<p>
+    <a href="{% url 'MateriaDelete' materia.id %}">Eliminar</a>
+</p>
+        <hr>
+    {% endfor %}
+{% endblock %}

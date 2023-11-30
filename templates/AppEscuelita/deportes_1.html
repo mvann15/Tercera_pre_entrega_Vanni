@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+<div>
+    <form action="/app/buscar" method="GET">
+
+       <h6><input type="text" name="nombre"></h6>
+
+        <h6><input type="submit" value="Buscar"></h6>
+
+    </form>
+</div>
+<p>
+    <a href="{% url 'DeporteCreate' %}">Crear</a>
+</p>
+
+   {% for deporte in object_list %}
+       <h5>{{ deporte.nombre }}</h5>
+        <p class="lead mb-0">
+
+        </p>
+       <h6>{{ deporte.categoria }}</h6>
+<p>
+    <a href="{% url 'DeporteDetail' deporte.id %}">Detalle</a>
+</p>
+<p>
+    <a href="{% url 'DeporteUpdate' deporte.id %}">Editar</a>
+</p>
+<p>
+    <a href="{% url 'DeporteDelete' deporte.id %}">Eliminar</a>
+</p>
+        <hr>
+    {% endfor %}
+{% endblock %}
